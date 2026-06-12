@@ -1,12 +1,12 @@
 import React from 'react';
 import {
   View, Text, ScrollView, TouchableOpacity,
-  StyleSheet, SafeAreaView, TextInput
+  StyleSheet
 } from 'react-native';
 
 export default function HomeScreen({ navigation }) {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scroll}>
 
         <View style={styles.header}>
@@ -14,9 +14,11 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.greeting}>Olá, Gabriel 👋</Text>
             <Text style={styles.sub}>3 grupos ativos</Text>
           </View>
-          <View style={styles.avatar}>
-            <Text style={styles.avatarText}>G</Text>
-          </View>
+          <TouchableOpacity onPress={() => navigation.navigate('Perfil')}>
+            <View style={styles.avatar}>
+              <Text style={styles.avatarText}>G</Text>
+            </View>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.search}>
@@ -25,25 +27,29 @@ export default function HomeScreen({ navigation }) {
 
         <Text style={styles.sectionLabel}>MEUS GRUPOS</Text>
 
-        <View style={[styles.card, styles.cardBlue]}>
-          <View>
-            <Text style={styles.cardTitle}>Cálculo II</Text>
-            <Text style={styles.cardSub}>5 membros · Sáb 10h</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
+          <View style={[styles.card, styles.cardBlue]}>
+            <View>
+              <Text style={styles.cardTitle}>Cálculo II</Text>
+              <Text style={styles.cardSub}>5 membros · Sáb 10h</Text>
+            </View>
+            <View style={styles.badgeBlue}>
+              <Text style={styles.badgeText}>Online</Text>
+            </View>
           </View>
-          <View style={styles.badgeBlue}>
-            <Text style={styles.badgeText}>Online</Text>
-          </View>
-        </View>
+        </TouchableOpacity>
 
-        <View style={[styles.card, styles.cardGreen]}>
-          <View>
-            <Text style={styles.cardTitle}>Estrutura de Dados</Text>
-            <Text style={styles.cardSub}>3 membros · Sex 19h</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
+          <View style={[styles.card, styles.cardGreen]}>
+            <View>
+              <Text style={styles.cardTitle}>Estrutura de Dados</Text>
+              <Text style={styles.cardSub}>3 membros · Sex 19h</Text>
+            </View>
+            <View style={styles.badgeGreen}>
+              <Text style={styles.badgeTextGreen}>Presencial</Text>
+            </View>
           </View>
-          <View style={styles.badgeGreen}>
-            <Text style={styles.badgeTextGreen}>Presencial</Text>
-          </View>
-        </View>
+        </TouchableOpacity>
 
         <Text style={styles.sectionLabel}>DISPONÍVEIS</Text>
 
@@ -64,20 +70,20 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.navIconActive}>🏠</Text>
           <Text style={styles.navLabelActive}>Home</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('CriarGrupo')}>
           <Text style={styles.navIcon}>👥</Text>
           <Text style={styles.navLabel}>Grupos</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Chat')}>
           <Text style={styles.navIcon}>💬</Text>
           <Text style={styles.navLabel}>Chat</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
+        <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Perfil')}>
           <Text style={styles.navIcon}>👤</Text>
           <Text style={styles.navLabel}>Perfil</Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
